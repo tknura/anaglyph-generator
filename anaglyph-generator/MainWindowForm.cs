@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace anaglyph_generator {
-    public partial class Form1 : Form {
-        public Form1() {
+    public partial class MainWindowForm : Form {
+        public MainWindowForm() {
             InitializeComponent();
         }
 
@@ -22,8 +22,24 @@ namespace anaglyph_generator {
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK) {
                 Console.WriteLine(openFileDialog1.FileName);
-                leftPhotoFileLabel.Text = openFileDialog1.FileName;
+                leftPhotoFileInput.Text = openFileDialog1.FileName;
             }
+        }
+
+        private void functionTypGroup_Enter(object sender, EventArgs e) {
+
+        }
+
+        private void cppRadioButton_CheckedChanged(object sender, EventArgs e) {
+
+        }
+
+        private void asemblyRadioButton_CheckedChanged(object sender, EventArgs e) {
+
+        }
+
+        private void generateAnaglyphButton_Click(object sender, EventArgs e) {
+
         }
     }
 }
