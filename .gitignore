@@ -1,2 +1,9 @@
 ﻿anaglyph-generator/bin
 anaglyph-generator/obj
+anaglyph-generator/.vs
+anaglyph-generator/Debug
+cs-anaglyph-generation/bin
+cs-anaglyph-generation/obj
+asm-anaglyph-generation/Debug
+asm-anaglyph-generation/Release
+asm-anaglyph-generation/x64

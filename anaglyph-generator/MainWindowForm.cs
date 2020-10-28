@@ -19,14 +19,17 @@ namespace anaglyph_generator {
         private void functionTypeRadioButton_CheckedChanged(object sender, EventArgs e) {
             isCsEnabled = csRadioButton.Checked;
             isAsemblyEnabled = asemblyRadioButton.Checked;
+            if (generator != null) {
+                generator.setAsmGeneration(isAsemblyEnabled);
+            }
         }
 
         private void generateAnaglyphButton_Click(object sender, EventArgs e) {
-            if(isCsEnabled) {
-                generator.generate(leftPhotoFileInput.Text, rightPhotoFileInput.Text);
-            } else if(isAsemblyEnabled) {
-                // To Do: add assembly function to generate method
-            }
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            resultPictureBox.Image = generator.generate();
+            watch.Stop();
+            saveResultButton.Enabled = true;
+            generationTime.Text = watch.ElapsedMilliseconds.ToString() + " ms";
         }
 
         private void choosePhotoFile(TextBox input, Label stateLabel) {
@@ -36,7 +39,10 @@ namespace anaglyph_generator {
                 stateLabel.Text = "File uploaded correctly.";
                 stateLabel.ForeColor = Color.Green;
                 if(leftPhotoFileInput.Text != "" && rightPhotoFileInput.Text != "") {
+                    generator = new AnaglyphGenerator(leftPhotoFileInput.Text, rightPhotoFileInput.Text);
                     generateAnaglyphButton.Enabled = true;
+                    functionTypeGroup.Enabled = true;
+                    threadNumberGroupBox.Enabled = true;
                 }
             }
             else if (result == DialogResult.Cancel) {
@@ -57,8 +63,34 @@ namespace anaglyph_generator {
             choosePhotoFile(rightPhotoFileInput, rightFileStateLabel);
         }
 
-        private void MainWindowForm_Load(object sender, EventArgs e) {
+        private void threadNumber_ValueChanged(object sender, EventArgs e) {
+            if (generator != null) {
+                generator.setThreadAmount((int)threadNumber.Value);
+            }
+        }
 
+        private void saveResultButton_Click(object sender, EventArgs e) {
+            if (saveResultFileDialog.ShowDialog() == DialogResult.OK) {
+                if (generator != null) {
+                    System.IO.FileStream fs = (System.IO.FileStream)saveResultFileDialog.OpenFile();
+                    switch (saveResultFileDialog.FilterIndex) {
+                        case 1:
+                            generator.getResult().Save(fs,
+                              System.Drawing.Imaging.ImageFormat.Jpeg);
+                            break;
+
+                        case 2:
+                            generator.getResult().Save(fs,
+                              System.Drawing.Imaging.ImageFormat.Bmp);
+                            break;
+
+                        case 3:
+                            generator.getResult().Save(fs,
+                              System.Drawing.Imaging.ImageFormat.Gif);
+                            break;
+                    }
+                }
+            }
         }
     }
 }

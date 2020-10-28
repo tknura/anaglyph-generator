@@ -4,17 +4,59 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "anaglyph-generator", "anaglyph-generator.csproj", "{20263032-5C38-4C1A-8533-5C7C86F1EBC1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D144247C-DCAE-4252-8237-7020BAAFC5DB} = {D144247C-DCAE-4252-8237-7020BAAFC5DB}
+		{62CA2A9F-877F-4813-9B28-86909A908851} = {62CA2A9F-877F-4813-9B28-86909A908851}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "asm-anaglyph-generation", "..\asm-anaglyph-generation\asm-anaglyph-generation.vcxproj", "{62CA2A9F-877F-4813-9B28-86909A908851}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cs-anaglyph-generation", "..\cs-anaglyph-generation\cs-anaglyph-generation.csproj", "{D144247C-DCAE-4252-8237-7020BAAFC5DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{20263032-5C38-4C1A-8533-5C7C86F1EBC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{20263032-5C38-4C1A-8533-5C7C86F1EBC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20263032-5C38-4C1A-8533-5C7C86F1EBC1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{20263032-5C38-4C1A-8533-5C7C86F1EBC1}.Debug|x64.Build.0 = Debug|Any CPU
+		{20263032-5C38-4C1A-8533-5C7C86F1EBC1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{20263032-5C38-4C1A-8533-5C7C86F1EBC1}.Debug|x86.Build.0 = Debug|Any CPU
 		{20263032-5C38-4C1A-8533-5C7C86F1EBC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20263032-5C38-4C1A-8533-5C7C86F1EBC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20263032-5C38-4C1A-8533-5C7C86F1EBC1}.Release|x64.ActiveCfg = Release|Any CPU
+		{20263032-5C38-4C1A-8533-5C7C86F1EBC1}.Release|x64.Build.0 = Release|Any CPU
+		{20263032-5C38-4C1A-8533-5C7C86F1EBC1}.Release|x86.ActiveCfg = Release|Any CPU
+		{20263032-5C38-4C1A-8533-5C7C86F1EBC1}.Release|x86.Build.0 = Release|Any CPU
+		{62CA2A9F-877F-4813-9B28-86909A908851}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{62CA2A9F-877F-4813-9B28-86909A908851}.Debug|x64.ActiveCfg = Debug|x64
+		{62CA2A9F-877F-4813-9B28-86909A908851}.Debug|x64.Build.0 = Debug|x64
+		{62CA2A9F-877F-4813-9B28-86909A908851}.Debug|x86.ActiveCfg = Debug|Win32
+		{62CA2A9F-877F-4813-9B28-86909A908851}.Debug|x86.Build.0 = Debug|Win32
+		{62CA2A9F-877F-4813-9B28-86909A908851}.Release|Any CPU.ActiveCfg = Release|Win32
+		{62CA2A9F-877F-4813-9B28-86909A908851}.Release|x64.ActiveCfg = Release|x64
+		{62CA2A9F-877F-4813-9B28-86909A908851}.Release|x64.Build.0 = Release|x64
+		{62CA2A9F-877F-4813-9B28-86909A908851}.Release|x86.ActiveCfg = Release|Win32
+		{62CA2A9F-877F-4813-9B28-86909A908851}.Release|x86.Build.0 = Release|Win32
+		{D144247C-DCAE-4252-8237-7020BAAFC5DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D144247C-DCAE-4252-8237-7020BAAFC5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D144247C-DCAE-4252-8237-7020BAAFC5DB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D144247C-DCAE-4252-8237-7020BAAFC5DB}.Debug|x64.Build.0 = Debug|Any CPU
+		{D144247C-DCAE-4252-8237-7020BAAFC5DB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D144247C-DCAE-4252-8237-7020BAAFC5DB}.Debug|x86.Build.0 = Debug|Any CPU
+		{D144247C-DCAE-4252-8237-7020BAAFC5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D144247C-DCAE-4252-8237-7020BAAFC5DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D144247C-DCAE-4252-8237-7020BAAFC5DB}.Release|x64.ActiveCfg = Release|Any CPU
+		{D144247C-DCAE-4252-8237-7020BAAFC5DB}.Release|x64.Build.0 = Release|Any CPU
+		{D144247C-DCAE-4252-8237-7020BAAFC5DB}.Release|x86.ActiveCfg = Release|Any CPU
+		{D144247C-DCAE-4252-8237-7020BAAFC5DB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
