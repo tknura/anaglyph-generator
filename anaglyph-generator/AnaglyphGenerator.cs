@@ -52,16 +52,12 @@ namespace anaglyph_generator {
 
         public Bitmap generate() {
             var res = new byte[leftPicture.Length];
-            for (int i = 0; i < res.Length - 2; i += 3) {
-                if (isAsmGenerationEnabled) {
+            byte[][] bitmaps = { leftPicture, rightPicture, res };
+            if (isAsmGenerationEnabled) {
 
-                }
-                else {
-                    res[i] = rightPicture[i + 2];
-                    res[i + 1] = rightPicture[i + 1];
-                    res[i + 2] = Convert.ToByte(0.299 * (double)leftPicture[i] + 0.587 * (double)leftPicture[i + 1] + 0.114 * (double)leftPicture[i + 2]);
-                    //CsAnaglyphHelper.makeAnagliph();
-                }
+            }
+            else {
+                CsAnaglyphHelper.makeAnagliph(bitmaps, 0, res.Length);
             }
             result = new Bitmap(resultWidth, resultHeight, PixelFormat.Format24bppRgb);
             BitmapData resultData = result.LockBits(
