@@ -263,7 +263,7 @@
             this.resultPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resultPictureBox.Name = "resultPictureBox";
             this.resultPictureBox.Size = new System.Drawing.Size(720, 605);
-            this.resultPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.resultPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.resultPictureBox.TabIndex = 8;
             this.resultPictureBox.TabStop = false;
             // 
@@ -340,6 +340,8 @@
             // 
             // saveResultButton
             // 
+            this.saveResultButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.saveResultButton.Enabled = false;
             this.saveResultButton.Location = new System.Drawing.Point(24, 925);
             this.saveResultButton.Name = "saveResultButton";

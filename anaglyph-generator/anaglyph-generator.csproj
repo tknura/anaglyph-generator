@@ -33,8 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AnaglyphGenerationHelper">
-      <HintPath>..\cs-anaglyph-generation\bin\Release\AnaglyphGenerationHelper.dll</HintPath>
+    <Reference Include="AnaglyphGenerationHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\cs-anaglyph-generation\bin\Debug\AnaglyphGenerationHelper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
