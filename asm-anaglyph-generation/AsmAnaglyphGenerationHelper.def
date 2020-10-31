@@ -1,2 +1,2 @@
 LIBRARY AsmAnaglyphGenerationHelper
-EXPORT anaglifs_ASM
+EXPORT asmMakeAnagliph

@@ -25,11 +25,9 @@ namespace anaglyph_generator {
         }
 
         private void generateAnaglyphButton_Click(object sender, EventArgs e) {
-            var watch = System.Diagnostics.Stopwatch.StartNew();
             resultPictureBox.Image = generator.generate();
-            watch.Stop();
             saveResultButton.Enabled = true;
-            generationTime.Text = watch.ElapsedMilliseconds.ToString() + " ms";
+            generationTime.Text = generator.getGenerationTime().ToString() + " ms";
         }
 
         private void choosePhotoFile(TextBox input, Label stateLabel) {

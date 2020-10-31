@@ -13,10 +13,12 @@ namespace CsAnaglyphGenerationHelper
             byte[] rightPic = bitmaps[1];
             byte[] result = bitmaps[2];
 
-            for (int i = startPoint; i < endPoint - 2; i += 3) {
-                result[i] = rightPic[i];
-                result[i + 1] = rightPic[i + 1];
-                result[i + 2] = Convert.ToByte(0.299 * leftPic[i + 2] + 0.587 * leftPic[i + 1] + 0.114 * leftPic[i]);
+            for (int i = startPoint;i < endPoint; i++) {
+                if(i % 3 == 0 || i % 3 == 1) {
+                    result[i] = rightPic[i]; // B or G
+                } else if (i % 3 == 2) {
+                    result[i] = Convert.ToByte(0.299 * leftPic[i] + 0.587 * leftPic[i - 1] + 0.114 * leftPic[i - 2]); //R
+                }
             }
         }
     }

@@ -130,7 +130,7 @@
             this.rightPhotoGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rightPhotoGroup.Name = "rightPhotoGroup";
             this.rightPhotoGroup.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.rightPhotoGroup.Size = new System.Drawing.Size(352, 112);
+            this.rightPhotoGroup.Size = new System.Drawing.Size(346, 112);
             this.rightPhotoGroup.TabIndex = 4;
             this.rightPhotoGroup.TabStop = false;
             this.rightPhotoGroup.Text = "Right picture";
@@ -138,7 +138,7 @@
             // rightPhotoFileButton
             // 
             this.rightPhotoFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rightPhotoFileButton.Location = new System.Drawing.Point(259, 57);
+            this.rightPhotoFileButton.Location = new System.Drawing.Point(253, 57);
             this.rightPhotoFileButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rightPhotoFileButton.Name = "rightPhotoFileButton";
             this.rightPhotoFileButton.Size = new System.Drawing.Size(75, 23);
@@ -175,13 +175,13 @@
             this.rightPhotoFileInput.Location = new System.Drawing.Point(5, 57);
             this.rightPhotoFileInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rightPhotoFileInput.Name = "rightPhotoFileInput";
-            this.rightPhotoFileInput.Size = new System.Drawing.Size(247, 22);
+            this.rightPhotoFileInput.Size = new System.Drawing.Size(241, 22);
             this.rightPhotoFileInput.TabIndex = 5;
             // 
             // rightPhotoFilePickButton
             // 
             this.rightPhotoFilePickButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rightPhotoFilePickButton.Location = new System.Drawing.Point(427, 71);
+            this.rightPhotoFilePickButton.Location = new System.Drawing.Point(421, 71);
             this.rightPhotoFilePickButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rightPhotoFilePickButton.Name = "rightPhotoFilePickButton";
             this.rightPhotoFilePickButton.Size = new System.Drawing.Size(75, 23);
@@ -192,8 +192,6 @@
             // 
             // functionTypeGroup
             // 
-            this.functionTypeGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.functionTypeGroup.Controls.Add(this.asemblyRadioButton);
             this.functionTypeGroup.Controls.Add(this.csRadioButton);
             this.functionTypeGroup.Enabled = false;
@@ -262,8 +260,8 @@
             this.resultPictureBox.Location = new System.Drawing.Point(24, 315);
             this.resultPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resultPictureBox.Name = "resultPictureBox";
-            this.resultPictureBox.Size = new System.Drawing.Size(720, 605);
-            this.resultPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.resultPictureBox.Size = new System.Drawing.Size(714, 402);
+            this.resultPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.resultPictureBox.TabIndex = 8;
             this.resultPictureBox.TabStop = false;
             // 
@@ -275,7 +273,7 @@
             this.generateAnaglyphButton.Location = new System.Drawing.Point(24, 233);
             this.generateAnaglyphButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.generateAnaglyphButton.Name = "generateAnaglyphButton";
-            this.generateAnaglyphButton.Size = new System.Drawing.Size(720, 34);
+            this.generateAnaglyphButton.Size = new System.Drawing.Size(714, 34);
             this.generateAnaglyphButton.TabIndex = 9;
             this.generateAnaglyphButton.Text = "Generate anaglyph";
             this.generateAnaglyphButton.UseVisualStyleBackColor = true;
@@ -301,13 +299,15 @@
             this.threadNumberGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.threadNumberGroupBox.Name = "threadNumberGroupBox";
             this.threadNumberGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.threadNumberGroupBox.Size = new System.Drawing.Size(355, 76);
+            this.threadNumberGroupBox.Size = new System.Drawing.Size(349, 76);
             this.threadNumberGroupBox.TabIndex = 6;
             this.threadNumberGroupBox.TabStop = false;
             this.threadNumberGroupBox.Text = "Choose generation function type";
             // 
             // threadNumber
             // 
+            this.threadNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.threadNumber.Location = new System.Drawing.Point(8, 43);
             this.threadNumber.Maximum = new decimal(new int[] {
             64,
@@ -320,7 +320,7 @@
             0,
             0});
             this.threadNumber.Name = "threadNumber";
-            this.threadNumber.Size = new System.Drawing.Size(329, 22);
+            this.threadNumber.Size = new System.Drawing.Size(323, 22);
             this.threadNumber.TabIndex = 8;
             this.threadNumber.Value = new decimal(new int[] {
             1,
@@ -331,6 +331,8 @@
             // 
             // threadNumberLabel
             // 
+            this.threadNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.threadNumberLabel.AutoSize = true;
             this.threadNumberLabel.Location = new System.Drawing.Point(5, 23);
             this.threadNumberLabel.Name = "threadNumberLabel";
@@ -343,9 +345,9 @@
             this.saveResultButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.saveResultButton.Enabled = false;
-            this.saveResultButton.Location = new System.Drawing.Point(24, 925);
+            this.saveResultButton.Location = new System.Drawing.Point(24, 722);
             this.saveResultButton.Name = "saveResultButton";
-            this.saveResultButton.Size = new System.Drawing.Size(720, 31);
+            this.saveResultButton.Size = new System.Drawing.Size(714, 31);
             this.saveResultButton.TabIndex = 11;
             this.saveResultButton.Text = "Save Result";
             this.saveResultButton.UseVisualStyleBackColor = true;
@@ -361,7 +363,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 968);
+            this.ClientSize = new System.Drawing.Size(770, 765);
             this.Controls.Add(this.saveResultButton);
             this.Controls.Add(this.threadNumberGroupBox);
             this.Controls.Add(this.titleLabel);

@@ -1,18 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
+using System.Threading;
 using System.Runtime.InteropServices;
 using CsAnaglyphGenerationHelper;
 
 namespace anaglyph_generator {
-    class AnaglyphGenerator { 
+    class AnaglyphGenerator {
+        [DllImport(@"E:\Repositories\anaglyph-generator\anaglyph-generator\Debug\asm-anaglyph-generation.dll")]
+        static extern void asmMakeAnagliph(byte[][] bitmaps, int startPoint, int endPoint);
+
         private byte[] leftPicture;
         private byte[] rightPicture;
+
         private int resultWidth;
         private int resultHeight;
         private Bitmap result;
+
+        private long generationTime;
         private bool isAsmGenerationEnabled = false;
+
+        private int partSize = 256;
         private int threadAmount = 1;
 
         private byte[] getDataByteArrayFromBitmapFile(String filePath) {
@@ -38,6 +47,10 @@ namespace anaglyph_generator {
             setResultBitmapSize(leftPicturePath);
         }
 
+        public long getGenerationTime() {
+            return generationTime;
+        }
+
         public void setAsmGeneration(bool value) {
             isAsmGenerationEnabled = value;
         }
@@ -51,22 +64,51 @@ namespace anaglyph_generator {
         }
 
         public Bitmap generate() {
-            var res = new byte[leftPicture.Length];
-            byte[][] bitmaps = { leftPicture, rightPicture, res };
+            byte[][] bitmaps = { leftPicture, rightPicture, new byte[leftPicture.Length]};
+            AnaglyphGenerationTask.setBitmaps(bitmaps);
             if (isAsmGenerationEnabled) {
+                AnaglyphGenerationTask.setGenerationFunction(asmMakeAnagliph);
+            } else {
+                AnaglyphGenerationTask.setGenerationFunction(CsAnaglyphHelper.makeAnagliph);
+            }
 
+            int minWorker, maxWorker, IOC;
+            ThreadPool.GetMinThreads(out minWorker, out IOC);
+            ThreadPool.SetMinThreads(threadAmount, IOC);
+            ThreadPool.GetMaxThreads(out maxWorker, out IOC);
+            ThreadPool.SetMaxThreads(threadAmount, IOC);
+
+            int partsAmount = bitmaps[2].Length / partSize;
+            var doneEvents = new ManualResetEvent[bitmaps[2].Length % partSize == 0 ? partsAmount : partsAmount + 1];
+
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            for (int i = 0; i < partsAmount; i++) {
+                doneEvents[i] = new ManualResetEvent(false);
+                AnaglyphGenerationTask agTask = new AnaglyphGenerationTask((i * partSize), ((i + 1) * partSize), doneEvents[i]);
+                ThreadPool.QueueUserWorkItem(new WaitCallback(agTask.ThreadProc));
             }
-            else {
-                CsAnaglyphHelper.makeAnagliph(bitmaps, 0, res.Length);
+            if(bitmaps[2].Length % partSize != 0) {
+                doneEvents[partsAmount] = new ManualResetEvent(false);
+                AnaglyphGenerationTask agTask = new AnaglyphGenerationTask((partsAmount * partSize) - 1, bitmaps[2].Length - 1, doneEvents[partsAmount]);
+                ThreadPool.QueueUserWorkItem(new WaitCallback(agTask.ThreadProc));
             }
+            foreach (var e in doneEvents) {
+                e.WaitOne();
+            }
+
+            watch.Stop();
+
+            generationTime = watch.ElapsedMilliseconds;
             result = new Bitmap(resultWidth, resultHeight, PixelFormat.Format24bppRgb);
             BitmapData resultData = result.LockBits(
                 new Rectangle(0, 0, result.Width, result.Height),
                 ImageLockMode.WriteOnly,
                 result.PixelFormat
                 );
-            Marshal.Copy(res, 0, resultData.Scan0, res.Length);
+            Marshal.Copy(bitmaps[2], 0, resultData.Scan0, bitmaps[2].Length);
             result.UnlockBits(resultData);
+
             return result;
         }
     }
