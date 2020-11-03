@@ -7,7 +7,7 @@ namespace anaglyph_generator {
         private ManualResetEvent doneEvent;
         private int startPoint;
         private int endPoint;
-        private static Action<byte[][], int, int> generationFunction;
+        private static Action<byte[], byte[], byte[], int, int> generationFunction;
 
         public AnaglyphGenerationTask(int startPoint, int endPoint, ManualResetEvent doneEvent) {
             this.startPoint = startPoint;
@@ -19,12 +19,12 @@ namespace anaglyph_generator {
             bitmaps = b;
         }
 
-        public static void setGenerationFunction(Action<byte[][], int, int> function) {
+        public static void setGenerationFunction(Action<byte[], byte[], byte[], int, int> function) {
             generationFunction = function;
         }
 
         public void ThreadProc(object callback) {
-            generationFunction(bitmaps, startPoint, endPoint);
+            generationFunction(bitmaps[0], bitmaps[1], bitmaps[2], startPoint, endPoint);
             doneEvent.Set();
         }
     }

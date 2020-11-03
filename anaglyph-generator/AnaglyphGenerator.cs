@@ -8,9 +8,6 @@ using CsAnaglyphGenerationHelper;
 
 namespace anaglyph_generator {
     class AnaglyphGenerator {
-        [DllImport(@"E:\Repositories\anaglyph-generator\anaglyph-generator\Debug\asm-anaglyph-generation.dll")]
-        static extern void asmMakeAnagliph(byte[][] bitmaps, int startPoint, int endPoint);
-
         private byte[] leftPicture;
         private byte[] rightPicture;
 
@@ -67,7 +64,7 @@ namespace anaglyph_generator {
             byte[][] bitmaps = { leftPicture, rightPicture, new byte[leftPicture.Length]};
             AnaglyphGenerationTask.setBitmaps(bitmaps);
             if (isAsmGenerationEnabled) {
-                AnaglyphGenerationTask.setGenerationFunction(asmMakeAnagliph);
+                AnaglyphGenerationTask.setGenerationFunction(AsmAnaglyphHelperProxy.makeAnagliph);
             } else {
                 AnaglyphGenerationTask.setGenerationFunction(CsAnaglyphHelper.makeAnagliph);
             }

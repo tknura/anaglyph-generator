@@ -8,11 +8,7 @@ using System.Threading.Tasks;
 namespace CsAnaglyphGenerationHelper
 {
     static public class CsAnaglyphHelper {
-        static public void makeAnagliph(byte[][] bitmaps, int startPoint, int endPoint) {
-            byte[] leftPic = bitmaps[0];
-            byte[] rightPic = bitmaps[1];
-            byte[] result = bitmaps[2];
-
+        static public void makeAnagliph(byte[] leftPic, byte[] rightPic, byte[] result, int startPoint, int endPoint) {
             for (int i = startPoint;i < endPoint; i++) {
                 if(i % 3 == 0 || i % 3 == 1) {
                     result[i] = rightPic[i]; // B or G

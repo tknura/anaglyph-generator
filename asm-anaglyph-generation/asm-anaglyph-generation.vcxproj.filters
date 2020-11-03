@@ -15,12 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="AsmAnaglyphGenerationHelper.asm">
+    <MASM Include="asm-anaglyph-generation.asm">
       <Filter>Source Files</Filter>
     </MASM>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AsmAnaglyphGenerationHelper.def">
+    <None Include="asm-anaglyph-generation.def">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
