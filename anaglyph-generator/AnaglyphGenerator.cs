@@ -18,7 +18,7 @@ namespace anaglyph_generator {
         private long generationTime;
         private bool isAsmGenerationEnabled = false;
 
-        private int partSize = 256;
+        private int partSize = 96;
         private int threadAmount = 1;
 
         private byte[] getDataByteArrayFromBitmapFile(String filePath) {

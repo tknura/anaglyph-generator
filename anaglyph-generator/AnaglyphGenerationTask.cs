@@ -24,7 +24,12 @@ namespace anaglyph_generator {
         }
 
         public void ThreadProc(object callback) {
-            generationFunction(bitmaps[0], bitmaps[1], bitmaps[2], startPoint, endPoint);
+            try {
+                generationFunction(bitmaps[0], bitmaps[1], bitmaps[2], startPoint, endPoint);
+            }
+            catch(Exception e) {
+                Console.WriteLine(e.Message);
+            }
             doneEvent.Set();
         }
     }
