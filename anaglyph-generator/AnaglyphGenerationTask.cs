@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Threading;
 
+// Autor: Tomasz Knura INF SSI gr.5 sem.5
+// Temat: Generator anaglifów
+// Wersja: 1.0
 namespace anaglyph_generator {
     public class AnaglyphGenerationTask {
         private static byte[][] bitmaps;

@@ -1,15 +1,24 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Drawing;
-using System.IO;
+using System.Management;
 using System.Windows.Forms;
 
+// Autor: Tomasz Knura INF SSI gr.5 sem.5
+// Temat: Generator anaglifów
+// Wersja: 1.0
 namespace anaglyph_generator {
     public partial class MainWindowForm : Form {
         public MainWindowForm() {
             InitializeComponent();
             csRadioButton.Checked = isCsEnabled;
             asemblyRadioButton.Checked = isAsemblyEnabled;
+            /* Ustawianie optymalnej liczby wątków dla danego urządzenia, która wynosi Max(MinThreads, CPU_CORES),
+             * MinThread w aplikacjach dekstopowych jest domyślnie równe 0, więc sprawdzamy i ustawiamy tylko ilość rdzeni */
+            int coreCount = 0;
+            foreach (var item in new ManagementObjectSearcher("Select * from Win32_Processor").Get()) {
+                coreCount += int.Parse(item["NumberOfCores"].ToString());
+            }
+            threadNumber.Value = coreCount;
         }
 
         AnaglyphGenerator generator;

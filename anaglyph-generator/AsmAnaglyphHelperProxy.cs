@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 
+// Autor: Tomasz Knura INF SSI gr.5 sem.5
+// Temat: Generator anaglifów
+// Wersja: 1.0
 namespace anaglyph_generator {
     class AsmAnaglyphHelperProxy {
         [DllImport("asm-anaglyph-generation.dll")]
